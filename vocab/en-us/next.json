@@ -1,0 +1,36 @@
+﻿{
+  "rasa_nlu_data": {
+    "common_examples": [
+      {
+        "text": "next slide",
+        "intent": "next",
+        "entities": []
+      },
+      {
+        "text": "next page",
+        "intent": "next",
+        "entities": []
+      },
+      {
+        "text": "forward",
+        "intent": "next",
+        "entities": []
+      },
+      {
+        "text": "move on",
+        "intent": "next",
+        "entities": []
+      },
+      {
+        "text": "go to next slide",
+        "intent": "next",
+        "entities": []
+      },
+      {
+        "text": "go to next page",
+        "intent": "next",
+        "entities": []
+      }
+    ]
+  }
+}

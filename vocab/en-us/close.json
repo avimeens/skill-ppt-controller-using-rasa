@@ -1,0 +1,26 @@
+﻿{
+  "rasa_nlu_data": {
+    "common_examples": [
+      {
+        "text": "end presentation",
+        "intent": "close",
+        "entities": []
+      },
+      {
+        "text": "stop presentation",
+        "intent": "close",
+        "entities": []
+      },
+      {
+        "text": "close presentation",
+        "intent": "close",
+        "entities": []
+      },
+      {
+        "text": "close file",
+        "intent": "close",
+        "entities": []
+      }
+    ]
+  }
+}
