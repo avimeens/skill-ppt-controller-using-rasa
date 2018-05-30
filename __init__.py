@@ -21,69 +21,69 @@ class PptControllerUsingRasaSkill(MycroftSkill):
         self.speak_dialog('ppt.controller.using.rasa')
 
     def handle_ppt_open(self, message):
-	filename = message.data.get("filename")
-	if filename is None:
-		self.speak_dialog('ppt.specifyfile')
-	else:	
-		self.enclosure.mouth_text("Nova opening file " + filename)
-		self.file_opened = True;
-		# Send a rest request
-		param = {'filename':filename}
-		self.enclosure.mouth_text("Sending request to " + self.url);
-		#response = requests.get(self.url, param)
-		response = requests.codes.ok
-		resp = {'filename' : filename}
-		#if response.status_code == requests.codes.ok:
-		if response == requests.codes.ok:
-        		self.speak_dialog('ppt.open', data=resp)
-		else: 
-			self.speak_dialog('ppt.filenotfound')
+        filename = message.data.get("filename")
+	    if filename is None:
+		    self.speak_dialog('ppt.specifyfile')
+        else:	
+            self.enclosure.mouth_text("Nova opening file " + filename)
+            self.file_opened = True;
+            # Send a rest request
+            param = {'filename':filename}
+            self.enclosure.mouth_text("Sending request to " + self.url);
+            #response = requests.get(self.url, param)
+            response = requests.codes.ok
+            resp = {'filename' : filename}
+            #if response.status_code == requests.codes.ok:
+            if response == requests.codes.ok:
+       	        self.speak_dialog('ppt.open', data=resp)
+            else: 
+                self.speak_dialog('ppt.filenotfound')
 
     def handle_next_slide(self, message):
-	if self.file_opened: 
-		# Send a rest request
-		nurl = self.url + "/nextpage"
-		self.enclosure.mouth_text("Sending request to " + nurl);
-		#response = requests.get(nurl)
-		response = requests.codes.ok
-		#if response.status_code == requests.codes.ok:
-		if response == requests.codes.ok:
-        		self.speak_dialog('ppt.next')
-		else: 
-			self.speak_dialog('ppt.filenotfound')
-	else: 
-        self.speak_dialog('ppt.filenotopen')
+        if self.file_opened: 
+            # Send a rest request
+            nurl = self.url + "/nextpage"
+            self.enclosure.mouth_text("Sending request to " + nurl);
+            #response = requests.get(nurl)
+            response = requests.codes.ok
+            #if response.status_code == requests.codes.ok:
+            if response == requests.codes.ok:
+                self.speak_dialog('ppt.next')
+            else: 
+                self.speak_dialog('ppt.filenotfound')
+        else: 
+            self.speak_dialog('ppt.filenotopen')
 	
     def handle_prev_slide(self, message):
-	if self.file_opened: 
-		# Send a rest request
-		purl = self.url + "/prevpage"
-		self.enclosure.mouth_text("Sending request to " + purl);
-		#response = requests.get(purl)
-		response = requests.codes.ok
-		#if response.status_code == requests.codes.ok:
-		if response == requests.codes.ok:
-        		self.speak_dialog('ppt.prev')
-		else: 
-			self.speak_dialog('ppt.filenotfound')
-	else: 
-		self.speak_dialog('ppt.filenotopen')
+        if self.file_opened: 
+            # Send a rest request
+            purl = self.url + "/prevpage"
+            self.enclosure.mouth_text("Sending request to " + purl);
+            #response = requests.get(purl)
+            response = requests.codes.ok
+            #if response.status_code == requests.codes.ok:
+            if response == requests.codes.ok:
+                self.speak_dialog('ppt.prev')
+            else: 
+                self.speak_dialog('ppt.filenotfound')
+        else: 
+            self.speak_dialog('ppt.filenotopen')
 
     def handle_ppt_close(self, message):
-	# Send a rest request
-	if self.file_opened: 
-		purl = self.url + "/close"
-		self.enclosure.mouth_text("Sending request to " + purl);
-		#response = requests.get(purl)
-		response = requests.codes.ok
-		#if response.status_code == requests.codes.ok:
-		if response == requests.codes.ok:
-			self.file_opened = False
-        		self.speak_dialog('ppt.close')
-		else: 
-			self.speak_dialog('ppt.filenotfound')
-	else: 
-		self.speak_dialog('ppt.filenotopen')
+        # Send a rest request
+        if self.file_opened: 
+            purl = self.url + "/close"
+            self.enclosure.mouth_text("Sending request to " + purl);
+            #response = requests.get(purl)
+            response = requests.codes.ok
+            #if response.status_code == requests.codes.ok:
+            if response == requests.codes.ok:
+                self.file_opened = False
+                self.speak_dialog('ppt.close')
+            else: 
+                self.speak_dialog('ppt.filenotfound')
+        else: 
+            self.speak_dialog('ppt.filenotopen')
 
 def create_skill():
     return PptControllerUsingRasaSkill()
