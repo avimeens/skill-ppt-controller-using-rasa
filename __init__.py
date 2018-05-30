@@ -1,4 +1,6 @@
+import requests
 from mycroft import MycroftSkill, intent_handler
+from mycroft.util.log import getLogger
 
 
 class PptControllerUsingRasaSkill(MycroftSkill):
