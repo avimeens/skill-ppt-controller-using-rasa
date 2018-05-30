@@ -22,8 +22,8 @@ class PptControllerUsingRasaSkill(MycroftSkill):
 
     def handle_ppt_open(self, message):
         filename = message.data.get("filename")
-	    if filename is None:
-		    self.speak_dialog('ppt.specifyfile')
+        if filename is None:
+            self.speak_dialog('ppt.specifyfile')
         else:	
             self.enclosure.mouth_text("Nova opening file " + filename)
             self.file_opened = True;
