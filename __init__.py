@@ -14,7 +14,7 @@ class PptControllerUsingRasaSkill(MycroftSkill):
         self.handle_ppt_controller_using_rasa)
         self.register_rasa_intent('open.json', self.handle_ppt_open)
         self.register_rasa_intent('next.json', self.handle_next_slide)
-        self.register_rasa_intent('prev.json', self.handle_prev_slide)
+        self.register_rasa_intent('previous.json', self.handle_prev_slide)
         self.register_rasa_intent('close.json', self.handle_ppt_close)
 
     def handle_ppt_controller_using_rasa(self, message):
